@@ -9,7 +9,7 @@ import (
 
 type RequestPayload struct {
 	Action string      `json:"action"`
-	Auth   AuthPayload `json: "auth,omitempty"`
+	Auth   AuthPayload `json:"auth,omitempty"`
 }
 
 type AuthPayload struct {
@@ -62,10 +62,10 @@ func (app *Config) authenticate(w http.ResponseWriter, a AuthPayload) {
 	defer response.Body.Close()
 
 	if response.StatusCode == http.StatusUnauthorized {
-		app.errorJSON(w, errors.New("Invalid Credentials"))
+		app.errorJSON(w, errors.New("invalid credentials"))
 		return
 	} else if response.StatusCode != http.StatusAccepted {
-		app.errorJSON(w, errors.New("Error calling auth service"))
+		app.errorJSON(w, errors.New("error calling auth service"))
 		return
 	}
 
