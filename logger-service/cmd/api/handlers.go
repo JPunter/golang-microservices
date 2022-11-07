@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"logger-service/data"
 	"net/http"
 )
@@ -30,5 +31,6 @@ func (app *Config) WriteLog(w http.ResponseWriter, r *http.Request) {
 		Message: "logged",
 	}
 
+	log.Println("Log written to Mongo:", requestPayload)
 	app.writeJSON(w, http.StatusAccepted, resp)
 }
