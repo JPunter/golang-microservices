@@ -21,8 +21,7 @@
 go.work
 
 # Ignore postgres data files
-*/db-data/postgres
-*/db-data/mongo
+*/db-data/*
 
 .DS_Store
 
