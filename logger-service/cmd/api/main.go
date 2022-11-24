@@ -72,7 +72,7 @@ func (app *Config) rpcListen() {
 	log.Println("Starting RPC service on port ", rpcPort)
 	listen, err := net.Listen("tcp", fmt.Sprintf("0.0.0.0:%s", rpcPort))
 	if err != nil {
-		return err
+		return
 	}
 	defer listen.Close()
 
