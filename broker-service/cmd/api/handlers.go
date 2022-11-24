@@ -145,7 +145,7 @@ func (app *Config) sendMail(w http.ResponseWriter, msg MailPayload) {
 	jsonData, _ := json.MarshalIndent(msg, "", "\t")
 
 	// call the mail service
-	mailServiceUrl := "http://mail-service/send"
+	mailServiceUrl := "http://mailer-service/send"
 
 	// post to mail service
 	request, err := http.NewRequest("POST", mailServiceUrl, bytes.NewBuffer(jsonData))
@@ -156,7 +156,7 @@ func (app *Config) sendMail(w http.ResponseWriter, msg MailPayload) {
 
 	request.Header.Set("Content-Type", "application/json")
 
-	client := &http.Client()
+	client := &http.Client{}
 	response, err := client.Do(request)
 	if err != nil {
 		app.errorJSON(w, err)
