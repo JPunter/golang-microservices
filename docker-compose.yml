@@ -12,6 +12,9 @@ services:
     deploy:
       mode: replicated
       replicas: 1
+    environment:
+      RABBITMQ_USERNAME: guest
+      RABBITMQ_PASSWORD: guest
 
   logger-service:
     build:
