@@ -25,9 +25,5 @@ db-data/
 
 .DS_Store
 
-# App executables
-frontApp
-brokerApp
-authApp
-loggerServiceApp
-mailerApp
+# App executables (any file that ends in App really)
+*App
