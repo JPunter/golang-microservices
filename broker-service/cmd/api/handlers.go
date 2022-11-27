@@ -7,6 +7,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"log"
 	"net/http"
 	"net/rpc"
 	"time"
@@ -256,12 +257,14 @@ func (app *Config) LogViaGRPC(w http.ResponseWriter, r *http.Request) {
 
 	err := app.readJSON(w, r, &requestPayload)
 	if err != nil {
+		log.Println("error catch 1")
 		app.errorJSON(w, err)
 		return
 	}
 
 	conn, err := grpc.Dial("logger-service:50001", grpc.WithTransportCredentials(insecure.NewCredentials()), grpc.WithBlock())
 	if err != nil {
+		log.Println("error catch 2")
 		app.errorJSON(w, err)
 		return
 	}

@@ -33,7 +33,7 @@ build_broker:
 
 ## build_logger: builds the logger binary as a linux executable
 build_logger:
-	@echo "Building broker binary..."
+	@echo "Building logger binary..."
 	cd ./logger-service && env GOOS=linux CGO_ENABLED=0 go build -o ${LOGGER_BINARY} ./cmd/api
 	@echo "Done!"
 
