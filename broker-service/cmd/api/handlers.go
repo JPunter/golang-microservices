@@ -256,13 +256,13 @@ func (app *Config) LogViaGRPC(w http.ResponseWriter, r *http.Request) {
 
 	err := app.readJSON(w, r, &requestPayload)
 	if err != nil {
-		app.errorJSON(w, r)
+		app.errorJSON(w, err)
 		return
 	}
 
 	conn, err := grpc.Dial("logger-service:50001", grpc.WithTransportCredentials(insecure.NewCredentials()), grpc.WithBlock())
 	if err != nil {
-		app.errorJSON(w, r)
+		app.errorJSON(w, err)
 		return
 	}
 	defer conn.Close()
@@ -272,7 +272,7 @@ func (app *Config) LogViaGRPC(w http.ResponseWriter, r *http.Request) {
 
 	defer cancel()
 
-	_, err := c.WriteLog(ctx, &logs.LogRequest{
+	_, err = c.WriteLog(ctx, &logs.LogRequest{
 		LogEntry: &logs.Log{
 			Name: requestPayload.Log.Name,
 			Data: requestPayload.Log.Data,
