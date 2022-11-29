@@ -102,7 +102,7 @@ services:
       - '8025:8025'
 
   mailhog_jcalonso:
-    image: 'jcalonso/mailhog:latest'
+    image: 'jpunter/mailhog:v1.0.0'
     ports:
       - '1025:1025'
       - '8025:8025'
