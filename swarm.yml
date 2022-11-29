@@ -2,7 +2,7 @@ version: '3'
 
 services:
   broker-service:
-    image: jpunter/go-broker-service:1.0.0
+    image: jpunter/go-broker-service:1.0.1
     ports:
       - "8080:80"
     deploy:
@@ -36,7 +36,7 @@ services:
       DSN: "host=postgres port=5432 user=postgres password=password dbname=users sslmode=disable timezone=UTC connect_timeout=5"
 
   mailer-service:
-    image: jpunter/go-mailer-service:1.0.0
+    image: jpunter/go-mailer-service:1.0.1
     deploy:
       mode: replicated
       replicas: 1
@@ -78,7 +78,7 @@ services:
       - ./db-data/mongo/:/data/db
 
   mailhog:
-    image: 'mailhog/mailhog:latest'
+    image: 'jpunter/go-mailhog:v1.0.0'
     ports:
       - '1025:1025'
       - '8025:8025'

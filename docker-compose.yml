@@ -96,6 +96,13 @@ services:
 
   mailhog:
     image: 'mailhog/mailhog:latest'
+    platform: linux/amd64
+    ports:
+      - '1025:1025'
+      - '8025:8025'
+
+  mailhog_jcalonso:
+    image: 'jcalonso/mailhog:latest'
     ports:
       - '1025:1025'
       - '8025:8025'
