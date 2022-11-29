@@ -47,7 +47,6 @@ func main() {
 
 func rabbitConnect() (*amqp.Connection, error) {
 	var counts int64
-	var backoff = 1 * time.Second
 	var connection *amqp.Connection
 
 	// don't return until rabbit is ready
@@ -69,7 +68,7 @@ func rabbitConnect() (*amqp.Connection, error) {
 		}
 
 		backOff := time.Duration(math.Pow(float64(counts), 2)) * time.Second
-		log.Printf("Backing off for %s seconds", backoff)
+		log.Printf("Backing off for %s seconds", backOff)
 		time.Sleep(backOff)
 		continue
 	}
