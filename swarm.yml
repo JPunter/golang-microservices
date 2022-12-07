@@ -15,10 +15,12 @@ services:
       - caddy_config:/config
 
   frontend-service:
-    image: jpunter/go-frontend-service:1.0.0
+    image: jpunter/go-frontend-service:1.0.2
     deploy:
       mode: replicated
       replicas: 1
+    environment:
+      BROKER_URL: "http://backend"
 
   broker-service:
     image: jpunter/go-broker-service:1.0.1
